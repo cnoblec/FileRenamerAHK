@@ -1,14 +1,17 @@
 ﻿SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 clipboard =  ; Start off empty to allow ClipWait to detect when the text has arrived.
-newClipboard = 
+
+nameWNum = 56
+name = 61
+
 ClipWait  ; Wait for the clipboard to contain text.
 
-clipboard := StringChop(clipboard,clipboard,56)
+StringMid, fileName, clipboard, nameWNum ; declare fileName.
 
-MsgBox Control-C copied the following contents to the clipboard:`n%clipboard%
+StringMid, newFileName, clipboard, name ; declare newFileName.
 
-StringChop(inputVar,outputVar,chop)
-{
-StringMid, inputVar, outputVar, chop
-return outputVar
-}
+length := StrLen(clipboard)
+
+FileCopy, %clipboard%, C:\Users\solra\Desktop\MySongs\%newFileName%
+
+MsgBox The following File was copied to MySongs:`n`n%fileName%
