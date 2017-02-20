@@ -6,7 +6,8 @@ name = 61
 ClipWait  ; Wait for the clipboard to contain text.
 
 StringMid, newFileName, clipboard, name ; declare newFileName.
+StringReplace, singleLineString, clipboard, `r`n, ©, All
 
-FileCopy, %clipboard%, C:\Users\solra\Desktop\MySongs\%newFileName% ; copy the file under its new name
+;FileCopy, %clipboard%, C:\Users\solra\Desktop\MySongs\%newFileName% ; copy the file under its new name ©
 
-MsgBox The following File was copied to MySongs:`n`n%fileName%
+MsgBox The following File was copied to MySongs:`n`n%singleLineString%
