@@ -19,15 +19,17 @@ ClipWait  ; Wait for the clipboard to contain text.
 
 StringReplace, singleLineString, clipboard, `r`n, ©, All
 
-StringGetPos, pos, clipboard, \, R ; Firt \ from the right
 
-pos += inputDel
-pos += 1
 
 Loop, parse, singleLineString, ©,
-{
-	MsgBox, file number %A_Index% is %A_LoopField%.
-	StringTrimLeft, newFileName, A_LoopField, pos ; declare newFileName.
+{	
+	StringGetPos, position, %A_LoopField%, \, L5 ; Fifth / from the left for each file should be the same
+	position += inputDel
+	position += 1
+	newFileName = %A_LoopField%
+	StringTrimLeft, newFileName, A_LoopField, position ; declare newFileName.
+	StringTrimLeft, newFileName, newFileName, inputDel
+	MsgBox, file number %A_Index% is %A_LoopField% and will be named %newFileName%
 	FileCopy, %A_LoopField%, C:\Users\solra\Desktop\MySongs\%newFileName% ; copy the file under its new name ©
 }
 
