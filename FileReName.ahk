@@ -11,7 +11,7 @@ if ErrorLevel
 	canceled = false
 }
 
-InputBox, inputDel, Setup, Please eneter the number of characters at the start of the file you wish to remove (as an ineger no spaces) then select and Crtl-C a song in the folder you wish to move,
+InputBox, inputDel, Setup, Please enter the number of characters at the start of the file you wish to remove (as an integer no spaces) then select and Crtl-C a song in the folder you wish to move,
 if ErrorLevel
 {
     MsgBox, CANCEL was pressed. the program will exit
